@@ -1,0 +1,22 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Iuliia Firsova",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.3",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "node-static": "^0.7.11",
+    "nodemon": "^2.0.7",
+    "socket.io": "^3.1.0"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
+}
