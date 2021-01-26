@@ -1,7 +1,10 @@
 let express = require('express');
-let app = express();
 let fs = require('fs');
 let exception = require('./exception.js');
+
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server,{cors:{origin:"*"}});
 
 let users = [{
     id: 1,
@@ -18,6 +21,11 @@ let users = [{
 app.get('/', function (req, res) {
     res.end(`{"greeting": "Hello World"}`);
 })
+
+io.on('connection', (socket) => {
+    console.log('a user connected', socket.id);
+    
+  });
 
 app.get('/users', function (req, res) {
     res.end(JSON.stringify(users));
@@ -38,8 +46,12 @@ app.use((err, req, res, next) => {
     res.sendStatus(500);
   });
 
-let server = app.listen(8081, function () {
+/*let server = app.listen(8081, function () {
     let host = server.address().address
     let port = server.address().port
-    console.log("Example app listening at http://%s:%s", host, port)
-})
+    console.log("Listening at http://%s:%s", host, port)
+})*/
+server.listen(8081, function () {
+    console.log('listening on *:8081');
+  });
+    
